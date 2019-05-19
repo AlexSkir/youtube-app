@@ -188,10 +188,9 @@ body {
 	}
 	.search {
     align-self: center;
-		height: 40%;
+		height: 50px;
 	}
 	.input-area {
-		height: 35px;
     font-size: 20px;
 	}
 	.fa-search {
