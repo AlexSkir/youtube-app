@@ -191,6 +191,7 @@ body {
 		height: 40%;
 	}
 	.input-area {
+		height: 35px;
     font-size: 20px;
 	}
 	.fa-search {
