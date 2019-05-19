@@ -52,6 +52,9 @@ function domBuilder(data, i) {
   } else {
     description.innerHTML += 'No description yet...';
   }
+  link.addEventListener('touchend', () => {
+    window.open(link.href, '_blank');
+  });
 }
 
 function viewersCounter(viewCount, i) {
