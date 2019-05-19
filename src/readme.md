@@ -1,0 +1,1 @@
+[https://alexskir.github.io/shitapp/](https://alexskir.github.io/shitapp/)
