@@ -34,7 +34,9 @@ function funcfack(number, a, e) {
     document.getElementById(`pageButton${number - 1}`).classList.remove('hidden');
     document.getElementById(`pageButton${number}`).classList.remove('hidden');
     document.getElementById(`pageButton${number + 1}`).classList.remove('hidden');
-    document.getElementById(`pageButton${number + 2}`).classList.remove('hidden');
+    if (document.getElementById(`pageButton${number + 2}`)) {
+      document.getElementById(`pageButton${number + 2}`).classList.remove('hidden');
+    }
   } else if (state.currentPage < 5) {
     const buttonsToHide = document.getElementsByClassName('pageButton');
     for (let r = 0; r < buttonsToHide.length; r++) {
