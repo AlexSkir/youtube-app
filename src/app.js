@@ -22,9 +22,9 @@ inputArea.addEventListener('keydown', e => {
   }
 });
 
-const youtube = new InfoLoader();
 // initialization of search request and DOM creating on search button click
 searchButton.addEventListener('click', () => {
+  const youtube = new InfoLoader();
   window.state.searchTags = inputArea.value;
   if (itemsSection.childNodes.length > 0 && buttonSection.childNodes.length > 0) {
     deleteButtons();
