@@ -58,6 +58,6 @@ function domBuilder(data, i) {
 }
 
 function viewersCounter(viewCount, i) {
-  document.getElementById(`data${i}`).innerHTML += viewCount;
+  document.getElementById(`data${i}`).innerHTML = viewCount;
 }
 export { domBuilder, viewersCounter };

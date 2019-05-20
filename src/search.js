@@ -14,8 +14,8 @@ export default class InfoLoader {
   constructor() {
     this.baselink = 'https://www.googleapis.com/youtube/v3/';
     // this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4'; extra-key
-    // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key
-    this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA';
+    this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0';
+    // this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA'; extra-key
     this.maxRezult = 15;
     this.count = 0;
     this.sate = [];
@@ -77,7 +77,7 @@ export default class InfoLoader {
       const item = data.items[i];
       const videoId = item.id.videoId;
       if (document.getElementById('itemsSection').childNodes.length >= 15) {
-        domBuilder(item, `${data.items.indexOf(item) + this.sate.length}`);
+        domBuilder(item, `${data.items.indexOf(item) + this.sate.length - 15}`);
       } else {
         domBuilder(item, data.items.indexOf(item));
       }
@@ -87,7 +87,7 @@ export default class InfoLoader {
     this.getRespCount(videos, viewCount => {
       for (let j = 0; j < viewCount.items.length; j++) {
         if (document.getElementById('itemsSection').childNodes.length > 15) {
-          viewersCounter(viewCount.items[j].statistics.viewCount, `${j + this.sate.length}`);
+          viewersCounter(viewCount.items[j].statistics.viewCount, `${j + this.sate.length - 15}`);
         } else {
           viewersCounter(viewCount.items[j].statistics.viewCount, j);
         }
@@ -126,5 +126,12 @@ export default class InfoLoader {
         nums.push(this.count);
       }
     }
+  }
+
+  deleteOldData() {
+    this.count = 0;
+    this.sate = [];
+    this.nextPage = '';
+    this.len = '';
   }
 }

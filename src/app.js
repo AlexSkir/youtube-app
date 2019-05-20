@@ -2,11 +2,10 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-import { pageLoad, searchButton, inputArea, itemsSection, buttonSection } from './onstart';
+import { pageLoad, searchButton, inputArea } from './onstart';
 import InfoLoader from './search';
 import { deleteButtons, deleteItemsPages } from './nodesManager';
-import scroll from './scroll';
-import touchScroll from './touchscroll';
+// import './events';
 
 window.state = {
   searchTags: ''
@@ -22,20 +21,19 @@ inputArea.addEventListener('keydown', e => {
 });
 
 // initialization of search request and DOM creating on search button click
-searchButton.addEventListener('click', () => {
-  const youtube = new InfoLoader();
-  window.state.searchTags = inputArea.value;
-  if (itemsSection.childNodes.length > 0 && buttonSection.childNodes.length > 0) {
+window.addEventListener('click', e => {
+  if (e.target === searchButton) {
+    window.state.searchTags = inputArea.value;
     deleteButtons();
     deleteItemsPages();
+    const youtube = new InfoLoader();
+    youtube.deleteOldData();
+    if (inputArea.value !== '') {
+      youtube.getResp(window.state.searchTags);
+    }
+    inputArea.value = '';
+    document.getElementById('next').addEventListener('click', () => {
+      youtube.getResp(window.state.searchTags);
+    });
   }
-  if (inputArea.value !== '') {
-    youtube.getResp(window.state.searchTags);
-  }
-  inputArea.value = '';
-  document.getElementById('next').addEventListener('click', () => {
-    youtube.getResp(window.state.searchTags);
-  });
-  scroll();
-  touchScroll();
 });

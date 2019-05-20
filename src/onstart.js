@@ -1,6 +1,10 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
+import scroll from './scroll';
+import touchScroll from './touchscroll';
+
 const container = document.createElement('div');
 const searchSection = document.createElement('div');
 const itemsSection = document.createElement('div');
@@ -8,8 +12,8 @@ const buttonSection = document.createElement('div');
 const inputArea = document.createElement('input');
 const searchButton = document.createElement('button');
 const icon = document.createElement('i');
-const next = document.createElement('button');
 let size = screen.width;
+const next = document.createElement('button');
 
 function pageLoad() {
   container.className = 'container';
@@ -45,6 +49,9 @@ function pageLoad() {
       searchSection.classList.remove('active-search-box');
     }
   });
+
+  scroll();
+  touchScroll();
 }
 
 window.addEventListener('resize', () => {

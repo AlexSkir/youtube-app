@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
-import { itemsSection } from './onstart';
-
 export default function scroll() {
-  const scrolled = itemsSection;
+  const scrolled = document.getElementById('itemsSection');
   let page;
   let firstPoint;
   let lastPoint;
@@ -10,22 +8,22 @@ export default function scroll() {
     lastPoint = e.pageX;
     const dif = firstPoint - lastPoint;
     if (dif > 20 && dif < 400) {
-      document.getElementById(`pageButton${+page + 1}`).click();
       scrolled.removeEventListener('mousemove', end);
+      document.getElementById(`pageButton${+page + 1}`).click();
     }
     if (dif < -20 && dif > -400) {
-      document.getElementById(`pageButton${+page - 1}`).click();
       scrolled.removeEventListener('mousemove', end);
+      document.getElementById(`pageButton${+page - 1}`).click();
     }
     return false;
   }
   function start(e) {
     page = document.getElementsByClassName('active')[0].innerHTML;
     firstPoint = e.pageX;
-    scrolled.addEventListener('mousemove', end);
+    scrolled.addEventListener('mousemove', end, false);
   }
-  scrolled.addEventListener('mousedown', start);
+  scrolled.addEventListener('mousedown', start, false);
   window.addEventListener('mouseup', () => {
-    scrolled.removeEventListener('mousemove', end);
+    scrolled.removeEventListener('mousemove', end, false);
   });
 }
