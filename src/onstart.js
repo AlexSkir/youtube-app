@@ -20,6 +20,7 @@ function pageLoad() {
   inputArea.value = '';
   icon.className = 'fas fa-search';
   searchButton.className = 'search-button';
+  searchButton.id = 'searchButton';
   searchButton.type = 'button';
   itemsSection.className = 'itemsSection';
   buttonSection.className = 'buttonSection';
@@ -34,7 +35,7 @@ function pageLoad() {
   searchSection.appendChild(inputArea);
   searchSection.insertBefore(searchButton, inputArea);
   searchButton.appendChild(icon);
-  buttonSection.appendChild(next);
+  searchSection.appendChild(next);
 
   document.body.addEventListener('click', e => {
     if (e.target.classList.contains('input-area')) {

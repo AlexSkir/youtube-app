@@ -13,8 +13,9 @@ import { size } from './onstart';
 export default class InfoLoader {
   constructor() {
     this.baselink = 'https://www.googleapis.com/youtube/v3/';
-    this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4';
+    // this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4'; extra-key
     // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key
+    this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA';
     this.maxRezult = 15;
     this.count = 0;
     this.sate = [];
@@ -64,7 +65,7 @@ export default class InfoLoader {
 
   func(data) {
     this.nextPage = data.nextPageToken;
-    this.sate.push(...data.items);
+    this.sate.push(data.items);
     this.len = data.items.length;
     const nums = [];
     const videos = [];

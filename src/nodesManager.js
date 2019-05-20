@@ -6,10 +6,14 @@
 import { size, buttonSection, itemsSection } from './onstart';
 
 const state = {
-  currentPage: 1,
+  currentPage: '',
   pages: ''
 };
+
 function createButton(number) {
+  if (state.currentPage === '') {
+    state.currentPage = 1;
+  }
   state.pages = number;
   const pageButton = document.createElement('button');
   pageButton.className = 'pageButton';
@@ -37,7 +41,6 @@ function createButton(number) {
       e.target.innerHTML = number;
     }
     if (state.pages - state.currentPage === 1) {
-      console.log(state.pages, state.currentPage);
       document.getElementById('next').click();
     }
     if (state.currentPage > 3) {
@@ -70,6 +73,8 @@ function createButton(number) {
 }
 
 function deleteButtons() {
+  state.currentPage = '';
+  state.pages = '';
   while (buttonSection.lastChild) {
     buttonSection.removeChild(buttonSection.lastChild);
   }

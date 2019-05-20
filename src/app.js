@@ -9,7 +9,6 @@ import scroll from './scroll';
 import touchScroll from './touchscroll';
 
 window.state = {
-  currentPage: '',
   searchTags: ''
 };
 
@@ -24,7 +23,7 @@ inputArea.addEventListener('keydown', e => {
 
 // initialization of search request and DOM creating on search button click
 searchButton.addEventListener('click', () => {
-  let youtube = new InfoLoader();
+  const youtube = new InfoLoader();
   window.state.searchTags = inputArea.value;
   if (itemsSection.childNodes.length > 0 && buttonSection.childNodes.length > 0) {
     deleteButtons();
