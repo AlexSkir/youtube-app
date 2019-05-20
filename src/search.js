@@ -65,7 +65,7 @@ export default class InfoLoader {
 
   func(data) {
     this.nextPage = data.nextPageToken;
-    this.sate.push(data.items);
+    this.sate.push(...data.items);
     this.len = data.items.length;
     const nums = [];
     const videos = [];
