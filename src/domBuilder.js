@@ -12,6 +12,7 @@ function domBuilder(data, i) {
   const channelIcon = document.createElement('i');
   const createdIcon = document.createElement('i');
   const createDate = document.createElement('span');
+  const watch = document.createElement('div');
   const watchedCount = document.createElement('span');
   const watchedIcon = document.createElement('i');
   const description = document.createElement('span');
@@ -30,6 +31,9 @@ function domBuilder(data, i) {
   link.href = `https://www.youtube.com/watch?v=${data.id.videoId}`;
   link.innerHTML = 'Watch on youtube';
   link.target = '_blank';
+  watch.className = 'watch';
+  watchedCount.className = 'watchedCount';
+  watchedIcon.className = 'fas fa-eye';
   itemsSection.appendChild(div);
   div.appendChild(topPart);
   div.appendChild(bottomPart);
@@ -41,10 +45,10 @@ function domBuilder(data, i) {
   bottomPart.appendChild(createDate);
   createDate.appendChild(createdIcon);
   createDate.innerHTML += data.snippet.publishedAt.split('T')[0];
-  watchedCount.className = 'watchedCount';
-  watchedIcon.className = 'fas fa-eye';
   bottomPart.appendChild(watchedCount);
-  watchedCount.appendChild(watchedIcon);
+  bottomPart.appendChild(watch);
+  watch.appendChild(watchedIcon);
+  watch.appendChild(watchedCount);
   watchedCount.id = `data${i}`;
   bottomPart.appendChild(description);
   if (data.snippet.description) {
@@ -58,6 +62,6 @@ function domBuilder(data, i) {
 }
 
 function viewersCounter(viewCount, i) {
-  document.getElementById(`data${i}`).innerHTML = viewCount;
+  document.getElementById(`data${i}`).innerText = viewCount;
 }
 export { domBuilder, viewersCounter };
