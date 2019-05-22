@@ -109,14 +109,14 @@ window.addEventListener(
         if (document.getElementById(`pageButton${curpage}`)) {
           setTimeout(() => {
             document.getElementById(`pageButton${curpage}`).click();
-          }, 200);
+          }, 400);
         }
       } else {
         const curpage = Math.ceil(+state.currentPage / 2);
         if (document.getElementById(`pageButton${curpage}`)) {
           setTimeout(() => {
             document.getElementById(`pageButton${curpage}`).click();
-          }, 200);
+          }, 300);
           if (prevpage % 2 === 0) {
             setTimeout(() => {
               itemsSection.scrollTo({ left: `${524 * (curpage - 1) + 262}` });
