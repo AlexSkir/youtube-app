@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+// eslint-disable-next-line import/no-cycle
 import { itemsSection } from './onstart';
 
 export default function touchScroll() {

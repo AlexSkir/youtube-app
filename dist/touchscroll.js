@@ -8,6 +8,7 @@ exports.default = touchScroll;
 var _onstart = require("./onstart");
 
 /* eslint-disable no-undef */
+// eslint-disable-next-line import/no-cycle
 function touchScroll() {
   const scrolled = _onstart.itemsSection;
   let page;

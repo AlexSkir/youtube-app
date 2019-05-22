@@ -12,6 +12,7 @@ var _onstart = require("./onstart");
 /* eslint-disable no-console */
 
 /* eslint-disable no-undef */
+//* build layout
 function domBuilder(data, i) {
   const div = document.createElement('div');
   const topPart = document.createElement('div');
@@ -73,11 +74,13 @@ function domBuilder(data, i) {
   link.addEventListener('touchend', () => {
     window.open(link.href, '_blank');
   });
-}
+} //* add view statistics to clips
+
 
 function viewersCounter(viewCount, i) {
   document.getElementById("data".concat(i)).innerText = viewCount;
-}
+} //* create page with searching advice if nothing was found
+
 
 function nothingFound(text) {
   const nothing = document.createElement('div');

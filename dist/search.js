@@ -28,17 +28,18 @@ var _onstart = require("./onstart");
 /* eslint-disable no-undef */
 class InfoLoader {
   constructor() {
-    this.baselink = 'https://www.googleapis.com/youtube/v3/'; // this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4'; extra-key
-    // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key
+    this.baselink = 'https://www.googleapis.com/youtube/v3/';
+    this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4'; // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key 2
+    // this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA'; extra-key 3
 
-    this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA';
     this.maxRezult = 15;
     this.count = '';
-    this.state = [];
+    this.clips = [];
     this.nextPage = '';
     this.len = '';
     this.nums = [];
-  }
+  } //* make url for clips information
+
 
   makeUrl(endPoint) {
     const options = {
@@ -57,7 +58,8 @@ class InfoLoader {
 
     url += "q={".concat(endPoint, "}");
     return url.slice(0, -1);
-  }
+  } //* make url for statistic request (view statistic)
+
 
   makeUrlCount(videoId) {
     const urlOptions = { ...videoId
@@ -70,19 +72,21 @@ class InfoLoader {
 
     this.url = url;
     return url.slice(0, -1);
-  }
+  } //* sending request for clips
+
 
   getResp(endPoint) {
-    fetch(this.makeUrl(endPoint)).then(res => res.json()).then(data => this.func(data)).catch(err => console.error(err));
-  }
+    fetch(this.makeUrl(endPoint)).then(res => res.json()).then(data => this.processData(data)).catch(err => console.error(err));
+  } //* sending request for view statistic
+
 
   getRespCount(videoId, callback) {
     fetch(this.makeUrlCount(videoId)).then(res => res.json()).then(data => callback(data)).catch(err => console.error(err));
   }
 
-  func(data) {
+  processData(data) {
     this.nextPage = data.nextPageToken;
-    this.state.push(...data.items);
+    this.clips.push(...data.items);
     this.len = data.items.length;
     const videos = [];
 
@@ -91,7 +95,7 @@ class InfoLoader {
       const videoId = item.id.videoId;
 
       if (document.getElementById('itemsSection').childNodes.length >= 15) {
-        (0, _domBuilder.domBuilder)(item, "".concat(data.items.indexOf(item) + this.state.length - 15));
+        (0, _domBuilder.domBuilder)(item, "".concat(data.items.indexOf(item) + this.clips.length - 15));
       } else {
         (0, _domBuilder.domBuilder)(item, data.items.indexOf(item));
       }
@@ -99,12 +103,13 @@ class InfoLoader {
       videos.push(videoId);
     }
 
-    this.countPages(this.len, this.nums); // fetching view statistics
+    this.countPages(this.len, this.nums); //* count and make pages
+    //* fetching view statistics
 
     this.getRespCount(videos, viewCount => {
       for (let j = 0; j < viewCount.items.length; j++) {
         if (document.getElementById('itemsSection').childNodes.length > 15) {
-          (0, _domBuilder.viewersCounter)(viewCount.items[j].statistics.viewCount, "".concat(j + this.state.length - 15));
+          (0, _domBuilder.viewersCounter)(viewCount.items[j].statistics.viewCount, "".concat(j + this.clips.length - 15));
         } else {
           (0, _domBuilder.viewersCounter)(viewCount.items[j].statistics.viewCount, j);
         }
@@ -113,26 +118,18 @@ class InfoLoader {
   }
 
   countPages(len, nums) {
-    const items = document.getElementById('itemsSection').childNodes.length;
-    let a;
-
-    if (items > 15 && items / 15 % 2 === 0 && len !== 15) {
-      a = len - 1;
-    } else {
-      a = len;
-    }
-
-    let length;
+    let a = len;
+    let lastPage;
 
     if (nums.length > 0) {
-      length = nums[nums.length - 1]; // eslint-disable-next-line no-param-reassign
+      lastPage = nums[nums.length - 1]; // eslint-disable-next-line no-param-reassign
 
       nums = [];
     } else {
-      length = 0;
+      lastPage = 0;
     }
 
-    this.count = length;
+    this.count = lastPage; //* creating pages according to screen width
 
     if (_onstart.size > 800) {
       if (a > 4) {
@@ -179,7 +176,7 @@ class InfoLoader {
 
   deleteOldData() {
     this.count = 0;
-    this.state = [];
+    this.clips = [];
     this.nextPage = '';
     this.len = '';
     this.nums = [];

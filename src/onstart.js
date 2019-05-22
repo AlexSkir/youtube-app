@@ -14,6 +14,7 @@ const searchButton = document.createElement('button');
 const icon = document.createElement('i');
 let size = screen.width;
 
+//* create layout for search request
 function pageLoad() {
   container.className = 'container';
   container.id = 'container';
@@ -45,7 +46,7 @@ function pageLoad() {
       searchSection.classList.remove('active-search-box');
     }
   });
-
+  //* initialising scroll event
   scroll();
   touchScroll();
 }

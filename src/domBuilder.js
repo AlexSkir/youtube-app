@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import { itemsSection } from './onstart';
 
+//* build layout
 function domBuilder(data, i) {
   const div = document.createElement('div');
   const topPart = document.createElement('div');
@@ -61,10 +62,12 @@ function domBuilder(data, i) {
   });
 }
 
+//* add view statistics to clips
 function viewersCounter(viewCount, i) {
   document.getElementById(`data${i}`).innerText = viewCount;
 }
 
+//* create page with searching advice if nothing was found
 function nothingFound(text) {
   const nothing = document.createElement('div');
   const noText = document.createElement('ul');
@@ -100,4 +103,5 @@ function nothingFound(text) {
   liSecond.innerHTML = 'Try using other keywords.';
   liThird.innerHTML = 'Try using more popular keywords.';
 }
+
 export { domBuilder, viewersCounter, nothingFound };

@@ -31,7 +31,8 @@ exports.inputArea = inputArea;
 const searchButton = document.createElement('button');
 exports.searchButton = searchButton;
 const icon = document.createElement('i');
-let size = screen.width;
+let size = screen.width; //* create layout for search request
+
 exports.size = size;
 
 function pageLoad() {
@@ -63,7 +64,8 @@ function pageLoad() {
     if (!e.target.classList.contains('input-area')) {
       searchSection.classList.remove('active-search-box');
     }
-  });
+  }); //* initialising scroll event
+
   (0, _scroll.default)();
   (0, _touchscroll.default)();
 }
