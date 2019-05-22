@@ -1,6 +1,6 @@
+/* eslint-disable no-console */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-plusplus */
-/* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-sequences */
@@ -14,13 +14,14 @@ export default class InfoLoader {
   constructor() {
     this.baselink = 'https://www.googleapis.com/youtube/v3/';
     // this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4'; extra-key
-    this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0';
-    // this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA'; extra-key
+    // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key
+    this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA';
     this.maxRezult = 15;
-    this.count = 0;
-    this.sate = [];
+    this.count = '';
+    this.state = [];
     this.nextPage = '';
     this.len = '';
+    this.nums = [];
   }
 
   makeUrl(endPoint) {
@@ -65,29 +66,25 @@ export default class InfoLoader {
 
   func(data) {
     this.nextPage = data.nextPageToken;
-    this.sate.push(...data.items);
+    this.state.push(...data.items);
     this.len = data.items.length;
-    const nums = [];
     const videos = [];
-    this.countPages(this.len, nums);
-    for (let k = 0; k < nums.length; k++) {
-      createButton(nums[k]);
-    }
     for (let i = 0; i < data.items.length; i++) {
       const item = data.items[i];
       const videoId = item.id.videoId;
       if (document.getElementById('itemsSection').childNodes.length >= 15) {
-        domBuilder(item, `${data.items.indexOf(item) + this.sate.length - 15}`);
+        domBuilder(item, `${data.items.indexOf(item) + this.state.length - 15}`);
       } else {
         domBuilder(item, data.items.indexOf(item));
       }
       videos.push(videoId);
     }
+    this.countPages(this.len, this.nums);
     // fetching view statistics
     this.getRespCount(videos, viewCount => {
       for (let j = 0; j < viewCount.items.length; j++) {
         if (document.getElementById('itemsSection').childNodes.length > 15) {
-          viewersCounter(viewCount.items[j].statistics.viewCount, `${j + this.sate.length - 15}`);
+          viewersCounter(viewCount.items[j].statistics.viewCount, `${j + this.state.length - 15}`);
         } else {
           viewersCounter(viewCount.items[j].statistics.viewCount, j);
         }
@@ -96,7 +93,22 @@ export default class InfoLoader {
   }
 
   countPages(len, nums) {
-    let a = len;
+    const items = document.getElementById('itemsSection').childNodes.length;
+    let a;
+    if (items > 15 && (items / 15) % 2 === 0 && len !== 15) {
+      a = len - 1;
+    } else {
+      a = len;
+    }
+    let length;
+    if (nums.length > 0) {
+      length = nums[nums.length - 1];
+      // eslint-disable-next-line no-param-reassign
+      nums = [];
+    } else {
+      length = 0;
+    }
+    this.count = length;
     if (size > 800) {
       if (a > 4) {
         this.count++;
@@ -126,12 +138,17 @@ export default class InfoLoader {
         nums.push(this.count);
       }
     }
+    for (let k = 0; k < nums.length; k++) {
+      createButton(nums[k]);
+    }
+    this.nums = nums;
   }
 
   deleteOldData() {
     this.count = 0;
-    this.sate = [];
+    this.state = [];
     this.nextPage = '';
     this.len = '';
+    this.nums = [];
   }
 }

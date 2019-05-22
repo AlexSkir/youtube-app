@@ -13,7 +13,6 @@ const inputArea = document.createElement('input');
 const searchButton = document.createElement('button');
 const icon = document.createElement('i');
 let size = screen.width;
-const next = document.createElement('button');
 
 function pageLoad() {
   container.className = 'container';
@@ -29,8 +28,6 @@ function pageLoad() {
   itemsSection.className = 'itemsSection';
   buttonSection.className = 'buttonSection';
   itemsSection.id = 'itemsSection';
-  next.id = 'next';
-  next.style.display = 'none';
 
   document.body.appendChild(container);
   container.appendChild(searchSection);
@@ -39,7 +36,6 @@ function pageLoad() {
   searchSection.appendChild(inputArea);
   searchSection.insertBefore(searchButton, inputArea);
   searchButton.appendChild(icon);
-  searchSection.appendChild(next);
 
   document.body.addEventListener('click', e => {
     if (e.target.classList.contains('input-area')) {
@@ -58,4 +54,4 @@ window.addEventListener('resize', () => {
   size = screen.width;
 });
 
-export { size, pageLoad, searchButton, inputArea, itemsSection, buttonSection };
+export { size, pageLoad, searchButton, inputArea, itemsSection, buttonSection, searchSection };

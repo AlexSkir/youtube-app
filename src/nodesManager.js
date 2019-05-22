@@ -73,7 +73,6 @@ function createButton(number) {
     document.getElementById('pageButton1').classList.add('active');
     document.getElementById('pageButton1').innerHTML = '1';
   }
-  // document.getElementById(`pageButton${number}`).removeEventListener(['click']);
   document.getElementById(`pageButton${number}`).addEventListener(
     'click',
     e => {
@@ -84,17 +83,16 @@ function createButton(number) {
 }
 
 function deleteButtons() {
-  state.currentPage = '';
-  state.pages = '';
   while (buttonSection.firstChild) {
     buttonSection.removeChild(buttonSection.firstChild);
   }
 }
 function deleteItemsPages() {
+  state.currentPage = '';
+  state.pages = '';
   while (itemsSection.firstChild) {
     itemsSection.removeChild(itemsSection.firstChild);
   }
-  //
 }
 
 export { state, createButton, deleteButtons, deleteItemsPages, funcfack };
