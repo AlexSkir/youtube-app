@@ -13,6 +13,7 @@ import {
 } from './onstart';
 import InfoLoader from './search';
 import { deleteButtons, deleteItemsPages, state } from './nodesManager';
+import { nothingFound } from './domBuilder';
 
 window.state = {
   searchTags: '',
@@ -150,6 +151,11 @@ window.addEventListener('click', e => {
       setTimeout(() => {
         youtube.getResp(window.state.searchTags);
       }, 200);
+      setTimeout(() => {
+        if (window.state.obj.len === 0) {
+          nothingFound(window.state.searchTags);
+        }
+      }, 800);
     }
     inputArea.value = '';
     document.getElementById('next').addEventListener('click', () => {

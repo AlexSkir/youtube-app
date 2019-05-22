@@ -161,6 +161,38 @@ body {
 	background-color: rgba(93, 219, 20, 0.87);
 }
 
+.nothingFound {
+	grid-area: 2 / 2 / span 1 / span 1;
+	width: 100%;
+	height: 70%;
+	display: grid;
+	grid-template-rows: repeat(4, 1fr);
+	align-items: center;
+	justify-items: center;
+}
+.noTitle {
+	grid-area: 2 / span 1;
+	font-size: 27px;
+}
+.keyWord {
+	font-style: italic;
+	font-weight: 500;
+	color: red;
+}
+.recomendation {
+	grid-area: 3 / span 1;
+	font-size: 22px;
+}
+.noText {
+	grid-area: 4 / span 1;
+	font-size: 22px;
+	line-height: 1.5;
+	list-style: disc;
+}
+.fa-frown {
+	grid-area: 1 / span 1;
+	transform: scale(5);
+}
 @media screen and (max-width: 800px) {
 	.container {
 		grid-template-columns: 1fr 10fr 1fr;
@@ -214,5 +246,9 @@ body {
     height: 35px;
     margin: 0 10px;
     font-size: 20px;
+	}
+	.nothingFound {
+		height: 100%;
+		text-align: center;
 	}
 }

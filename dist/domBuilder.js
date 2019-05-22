@@ -1,7 +1,17 @@
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
-import { itemsSection } from './onstart';
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.domBuilder = domBuilder;
+exports.viewersCounter = viewersCounter;
+exports.nothingFound = nothingFound;
+
+var _onstart = require("./onstart");
+
+/* eslint-disable no-console */
+
+/* eslint-disable no-undef */
 function domBuilder(data, i) {
   const div = document.createElement('div');
   const topPart = document.createElement('div');
@@ -24,17 +34,19 @@ function domBuilder(data, i) {
   createdIcon.className = 'far fa-calendar-alt';
   channelName.className = 'channel';
   createDate.className = 'createDate';
-  topPart.style.backgroundImage = `url(${data.snippet.thumbnails.medium.url})`;
+  topPart.style.backgroundImage = "url(".concat(data.snippet.thumbnails.medium.url, ")");
   link.className = 'link';
   title.className = 'title';
   title.innerHTML += data.snippet.title;
-  link.href = `https://www.youtube.com/watch?v=${data.id.videoId}`;
+  link.href = "https://www.youtube.com/watch?v=".concat(data.id.videoId);
   link.innerHTML = 'Watch on youtube';
   link.target = '_blank';
   watch.className = 'watch';
   watchedCount.className = 'watchedCount';
   watchedIcon.className = 'fas fa-eye';
-  itemsSection.appendChild(div);
+
+  _onstart.itemsSection.appendChild(div);
+
   div.appendChild(topPart);
   div.appendChild(bottomPart);
   topPart.appendChild(title);
@@ -49,20 +61,22 @@ function domBuilder(data, i) {
   bottomPart.appendChild(watch);
   watch.appendChild(watchedIcon);
   watch.appendChild(watchedCount);
-  watchedCount.id = `data${i}`;
+  watchedCount.id = "data".concat(i);
   bottomPart.appendChild(description);
+
   if (data.snippet.description) {
     description.innerHTML += data.snippet.description;
   } else {
     description.innerHTML += 'No description yet...';
   }
+
   link.addEventListener('touchend', () => {
     window.open(link.href, '_blank');
   });
 }
 
 function viewersCounter(viewCount, i) {
-  document.getElementById(`data${i}`).innerText = viewCount;
+  document.getElementById("data".concat(i)).innerText = viewCount;
 }
 
 function nothingFound(text) {
@@ -83,7 +97,9 @@ function nothingFound(text) {
   recomendation.className = 'recomendation';
   noText.className = 'noText';
   keyWord.className = 'keyWord';
-  itemsSection.appendChild(nothing);
+
+  _onstart.itemsSection.appendChild(nothing);
+
   nothing.appendChild(noIcon);
   nothing.appendChild(noTitle);
   noTitle.appendChild(titleText);
@@ -94,10 +110,9 @@ function nothingFound(text) {
   noText.appendChild(liSecond);
   noText.appendChild(liThird);
   titleText.innerHTML = 'No results found for ';
-  keyWord.innerHTML = `${text}`;
+  keyWord.innerHTML = "".concat(text);
   recomendation.innerHTML = 'Recommendations:';
   liFirst.innerHTML = 'Make sure all words are spelled correctly.';
   liSecond.innerHTML = 'Try using other keywords.';
   liThird.innerHTML = 'Try using more popular keywords.';
 }
-export { domBuilder, viewersCounter, nothingFound };
