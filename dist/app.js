@@ -32,14 +32,18 @@ document.addEventListener('DOMContentLoaded', _onstart.pageLoad);
 
 _onstart.inputArea.addEventListener('keydown', e => {
   if (e.keyCode === 13) {
-    document.querySelector('button').click();
+    document.querySelector('#searchButton').click();
   }
 }); //* initialization of search request and DOM creating on search button click
 
 
-window.addEventListener('click', e => {
-  if (e.target === _onstart.searchButton) {
-    //* delete old button for next requests
+_onstart.searchButton.addEventListener('click', () => {
+  if (_onstart.inputArea.value !== '') {
+    if (document.querySelector('.slider')) {
+      document.querySelector('.slider').style.display = 'none';
+    } //* delete old button for next requests
+
+
     if (document.getElementById('next')) {
       _onstart.searchSection.removeChild(document.getElementById('next'));
     }
@@ -69,13 +73,12 @@ window.addEventListener('click', e => {
           (0, _domBuilder.nothingFound)(current.searchTags); //* if no data found load page with searching advice
         }
       }, 800);
+      _onstart.inputArea.value = '';
+      document.getElementById('next').addEventListener('click', () => {
+        setTimeout(() => {
+          youtube.getResp(current.searchTags); //* if clicked - load next request's data
+        }, 200);
+      });
     }
-
-    _onstart.inputArea.value = '';
-    document.getElementById('next').addEventListener('click', () => {
-      setTimeout(() => {
-        youtube.getResp(current.searchTags); //* if clicked - load next request's data
-      }, 200);
-    });
   }
 }); // eslint-disable-next-line import/prefer-default-export

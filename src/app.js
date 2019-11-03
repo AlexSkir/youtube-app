@@ -17,13 +17,16 @@ document.addEventListener('DOMContentLoaded', pageLoad);
 
 inputArea.addEventListener('keydown', e => {
   if (e.keyCode === 13) {
-    document.querySelector('button').click();
+    document.querySelector('#searchButton').click();
   }
 });
 
 //* initialization of search request and DOM creating on search button click
-window.addEventListener('click', e => {
-  if (e.target === searchButton) {
+searchButton.addEventListener('click', () => {
+  if (inputArea.value !== '') {
+    if (document.querySelector('.slider')) {
+      document.querySelector('.slider').style.display = 'none';
+    }
     //* delete old button for next requests
     if (document.getElementById('next')) {
       searchSection.removeChild(document.getElementById('next'));
@@ -49,13 +52,14 @@ window.addEventListener('click', e => {
           nothingFound(current.searchTags); //* if no data found load page with searching advice
         }
       }, 800);
+
+      inputArea.value = '';
+      document.getElementById('next').addEventListener('click', () => {
+        setTimeout(() => {
+          youtube.getResp(current.searchTags); //* if clicked - load next request's data
+        }, 200);
+      });
     }
-    inputArea.value = '';
-    document.getElementById('next').addEventListener('click', () => {
-      setTimeout(() => {
-        youtube.getResp(current.searchTags); //* if clicked - load next request's data
-      }, 200);
-    });
   }
 });
 
