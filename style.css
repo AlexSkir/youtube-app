@@ -39,18 +39,25 @@ body {
 	opacity: 0.2;
 }
 .header {
+	position: relative;
 	display: flex;
-	align-items: center;
-	justify-content: space-around;
+	align-items: flex-end;
+  justify-content: flex-start;
 	width: 100%;
-	height: 100px;
+	height: 50px;
 	padding: 0 30px;
 	box-sizing: border-box;
 	z-index: 100;
 }
 .logo-block {
+	position: absolute;
+  top: 20px;
+  left: 20%;
+  margin-right: 80%;
+  transform: translateX(-140%);
 	display: flex;
 	align-items: center;
+	margin-bottom: 7px;
 }
 .logo-block .fa-youtube {
 	color: #f00;
@@ -64,6 +71,11 @@ body {
   font-size: 24px;
 }
 .search {
+	position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-right: 50%;
+  transform: translateX(-50%);
 	display: flex;
 	width: 60%;
 	min-width: 300px;
@@ -299,7 +311,19 @@ body {
 	.container {
 		justify-content: space-around;
 	}
+	.header {
+		flex-direction: column;
+		height: 100px;
+    align-items: center;
+	}
+	.logo-block {
+		position: unset;
+    left: unset;
+    margin: 0;
+    transform: none;
+	}
 	.search {
+		width: 90%;
 		height: 50px;
 	}
 	.input-area {		
@@ -311,14 +335,7 @@ body {
 }
 @media screen and (max-width: 600px) {
 	.container {
-		justify-content: space-evenly;
-	}
-	.header {
-		flex-direction: column;
-    height: 120px;
-	}
-	.search {
-		width: 100%;
+    justify-content: space-evenly;
 	}
 	.input-area {
     font-size: 20px;
