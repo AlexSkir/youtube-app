@@ -19,6 +19,7 @@ body {
 	user-select: none;
 }
 .container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -182,6 +183,7 @@ body {
 	margin: 20px;
 	background: white;
 	border: 1px solid black;
+	z-index: 100;
 }
 .topPart {
 	width: 100%;
@@ -247,6 +249,7 @@ body {
 	background: lightblue;
 	border: 1px solid black;
 	border-radius: 50%;    
+	z-index: 100;
 }
 .pageButton:focus {
 	outline: none;
@@ -317,10 +320,10 @@ body {
     align-items: center;
 	}
 	.logo-block {
-		position: unset;
-    left: unset;
-    margin: 0;
-    transform: none;
+		top: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
 	}
 	.search {
 		width: 90%;
@@ -335,7 +338,9 @@ body {
 }
 @media screen and (max-width: 600px) {
 	.container {
-    justify-content: space-evenly;
+		display: block;
+    padding: 20px 0;
+    box-sizing: border-box;
 	}
 	.input-area {
     font-size: 20px;
@@ -352,8 +357,21 @@ body {
 		font-size: 30px;
 	}
 	.itemsSection {
+		position: relative;
+    top: 30px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
 		width: 264px;
     height: 405px;
+	}
+	.buttonSection {
+    position: relative;
+    top: 50px;
+    width: 220px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
 	}
 	.pageButton {    
 		width: 35px;
