@@ -20,7 +20,7 @@ export default function touchScroll() {
     }
   }
   function start(e) {
-    e.preventDefault();
+    // e.preventDefault();
     page = document.getElementsByClassName('active')[0].innerHTML;
     firstPoint = e.changedTouches[0].pageX;
     scrolled.addEventListener('touchmove', end, { passive: false });

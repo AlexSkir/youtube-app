@@ -10,7 +10,60 @@ exports.nothingFound = nothingFound;
 var _onstart = require("./onstart");
 
 /* eslint-disable no-undef */
-//* build layout
+function onClickHandler(e, iconInfo) {
+  const parent = e.currentTarget.parentNode.parentNode.parentNode;
+  const bg = parent.querySelector('.info-block');
+
+  if (bg) {
+    if (bg.classList.contains('active-info-block')) {
+      bg.classList.remove('active-info-block');
+    } else {
+      bg.classList.add('active-info-block');
+    }
+  }
+
+  const targetInfo = parent.querySelector(".".concat(iconInfo));
+
+  if (targetInfo) {
+    if (targetInfo.classList.contains('hidden')) {
+      targetInfo.classList.remove('hidden');
+    } else {
+      targetInfo.classList.add('hidden');
+    }
+  }
+}
+
+function onMouseEnterHandler(e, iconInfo) {
+  const parent = e.currentTarget.parentNode.parentNode.parentNode;
+  const bg = parent.querySelector('.info-block');
+
+  if (bg) {
+    bg.classList.add('active-info-block');
+  }
+
+  const targetInfo = parent.querySelector(".".concat(iconInfo));
+
+  if (targetInfo) {
+    targetInfo.classList.remove('hidden');
+  }
+}
+
+function onMouseLeaveHandler(e, iconInfo) {
+  const parent = e.currentTarget.parentNode.parentNode.parentNode;
+  const bg = parent.querySelector('.info-block');
+
+  if (bg) {
+    bg.classList.remove('active-info-block');
+  }
+
+  const targetInfo = parent.querySelector(".".concat(iconInfo));
+
+  if (targetInfo) {
+    targetInfo.classList.add('hidden');
+  }
+} //* build layout
+
+
 function searchItemWrapper(data, i) {
   const item = document.createElement('div');
   const topPart = document.createElement('div');
@@ -74,34 +127,33 @@ function searchItemWrapper(data, i) {
     descriptionInfo.innerHTML += 'No description yet...';
   }
 
-  const icons = iconPanel.children;
-
-  for (let k = 0; k < icons.length; k++) {
-    icons[k].addEventListener('mouseenter', e => {
-      e.target.classList.add('active-button');
-      const parent = e.target.parentNode.parentNode.parentNode;
-      const first = parent.firstChild;
-      const bg = first.getElementsByClassName('info-block')[0];
-      bg.classList.add('active-info-block');
-      const targetClass = "".concat(e.target.className.split('Icon')[0], "Info");
-      const target = first.getElementsByClassName(targetClass)[0];
-      target.classList.remove('hidden');
-    });
-    icons[k].addEventListener('mouseleave', e => {
-      e.target.classList.remove('active-button');
-      const parent = e.target.parentNode.parentNode.parentNode;
-      const first = parent.firstChild;
-      const bg = first.getElementsByClassName('info-block')[0];
-      bg.classList.remove('active-info-block');
-      const targetClass = "".concat(e.target.className.split('Icon')[0], "Info");
-      const target = first.getElementsByClassName(targetClass)[0];
-      target.classList.add('hidden');
-    });
-  }
-
   link.addEventListener('touchend', () => {
     window.open(link.href, '_blank');
   });
+
+  channelIcon.ontouchend = e => onClickHandler(e, 'channelInfo');
+
+  channelIcon.onmouseenter = e => onMouseEnterHandler(e, 'channelInfo');
+
+  channelIcon.onmouseleave = e => onMouseLeaveHandler(e, 'channelInfo');
+
+  createdIcon.ontouchend = e => onClickHandler(e, 'createdInfo');
+
+  createdIcon.onmouseenter = e => onMouseEnterHandler(e, 'createdInfo');
+
+  createdIcon.onmouseleave = e => onMouseLeaveHandler(e, 'createdInfo');
+
+  watchedIcon.ontouchend = e => onClickHandler(e, 'watchedInfo');
+
+  watchedIcon.onmouseenter = e => onMouseEnterHandler(e, 'watchedInfo');
+
+  watchedIcon.onmouseleave = e => onMouseLeaveHandler(e, 'watchedInfo');
+
+  descriptionIcon.ontouchend = e => onClickHandler(e, 'descriptionInfo');
+
+  descriptionIcon.onmouseenter = e => onMouseEnterHandler(e, 'descriptionInfo');
+
+  descriptionIcon.onmouseleave = e => onMouseLeaveHandler(e, 'descriptionInfo');
 } //* add view statistics to clips
 
 
