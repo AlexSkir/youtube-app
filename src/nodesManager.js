@@ -52,11 +52,11 @@ function showButtons(number, a, e) {
   }
   //* when click the button sroll depends on device width
   if (size > 800) {
-    itemsSection.scrollTo({ left: `${1048 * (number - 1)}`, behavior: 'smooth' });
+    itemsSection.scrollTo({ left: `${1040 * (number - 1)}`, behavior: 'smooth' });
   } else if (size < 500) {
-    itemsSection.scrollTo({ left: `${262 * (number - 1)}`, behavior: 'smooth' });
+    itemsSection.scrollTo({ left: `${260 * (number - 1)}`, behavior: 'smooth' });
   } else {
-    itemsSection.scrollTo({ left: `${524 * (number - 1)}`, behavior: 'smooth' });
+    itemsSection.scrollTo({ left: `${520 * (number - 1)}`, behavior: 'smooth' });
   }
 }
 

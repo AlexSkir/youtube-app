@@ -187,7 +187,7 @@ body * {
 .itemsSection {
 	display: flex;
 	align-items: center;
-	width: 1048px;
+	width: 1040px;
 	height: 450px;
 	min-height: 450px;
 	overflow: hidden;
@@ -421,7 +421,7 @@ body * {
 		min-width: 500px;
 	}
 	.itemsSection {
-		width: 524px;
+		width: 520px;
 	}
 }
 @media screen and (max-width: 800px) {
@@ -474,7 +474,7 @@ body * {
 		min-width: unset;
 	}
 	.itemsSection {
-		width: 264px;
+		width: 260px;
 		height: 405px;
 		min-height: 405px;
 		margin: 20px 0;

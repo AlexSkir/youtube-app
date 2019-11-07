@@ -39,7 +39,7 @@ function () {
         if (prevpage % 2 === 0) {
           setTimeout(() => {
             _onstart.itemsSection.scrollTo({
-              left: "".concat(1048 * (curpage - 1) + 524)
+              left: "".concat(1040 * (curpage - 1) + 520)
             });
           }, 200);
         }
@@ -54,19 +54,19 @@ function () {
         if (prevpage % 4 === 0) {
           setTimeout(() => {
             _onstart.itemsSection.scrollTo({
-              left: "".concat(1048 * (curpage - 1) + 786)
+              left: "".concat(1040 * (curpage - 1) + 780)
             });
           }, 200);
         } else if (prevpage % 4 === 3) {
           setTimeout(() => {
             _onstart.itemsSection.scrollTo({
-              left: "".concat(1048 * (curpage - 1) + 524)
+              left: "".concat(1040 * (curpage - 1) + 520)
             });
           }, 200);
         } else if (prevpage % 4 === 2) {
           setTimeout(() => {
             _onstart.itemsSection.scrollTo({
-              left: "".concat(1048 * (curpage - 1) + 262)
+              left: "".concat(1040 * (curpage - 1) + 260)
             });
           }, 200);
         }
@@ -132,7 +132,7 @@ function () {
         if (prevpage % 2 === 0) {
           setTimeout(() => {
             _onstart.itemsSection.scrollTo({
-              left: "".concat(524 * (curpage - 1) + 262)
+              left: "".concat(520 * (curpage - 1) + 260)
             });
           }, 400);
         }

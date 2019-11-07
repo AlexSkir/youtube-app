@@ -29,7 +29,7 @@ window.addEventListener(
           document.getElementById(`pageButton${curpage}`).click();
           if (prevpage % 2 === 0) {
             setTimeout(() => {
-              itemsSection.scrollTo({ left: `${1048 * (curpage - 1) + 524}` });
+              itemsSection.scrollTo({ left: `${1040 * (curpage - 1) + 520}` });
             }, 200);
           }
         }
@@ -40,15 +40,15 @@ window.addEventListener(
           document.getElementById(`pageButton${curpage}`).click();
           if (prevpage % 4 === 0) {
             setTimeout(() => {
-              itemsSection.scrollTo({ left: `${1048 * (curpage - 1) + 786}` });
+              itemsSection.scrollTo({ left: `${1040 * (curpage - 1) + 780}` });
             }, 200);
           } else if (prevpage % 4 === 3) {
             setTimeout(() => {
-              itemsSection.scrollTo({ left: `${1048 * (curpage - 1) + 524}` });
+              itemsSection.scrollTo({ left: `${1040 * (curpage - 1) + 520}` });
             }, 200);
           } else if (prevpage % 4 === 2) {
             setTimeout(() => {
-              itemsSection.scrollTo({ left: `${1048 * (curpage - 1) + 262}` });
+              itemsSection.scrollTo({ left: `${1040 * (curpage - 1) + 260}` });
             }, 200);
           }
         }
@@ -108,7 +108,7 @@ window.addEventListener(
           }, 300);
           if (prevpage % 2 === 0) {
             setTimeout(() => {
-              itemsSection.scrollTo({ left: `${524 * (curpage - 1) + 262}` });
+              itemsSection.scrollTo({ left: `${520 * (curpage - 1) + 260}` });
             }, 400);
           }
         }

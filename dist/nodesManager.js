@@ -80,17 +80,17 @@ function showButtons(number, a, e) {
 
   if (_onstart.size > 800) {
     _onstart.itemsSection.scrollTo({
-      left: "".concat(1048 * (number - 1)),
+      left: "".concat(1040 * (number - 1)),
       behavior: 'smooth'
     });
   } else if (_onstart.size < 500) {
     _onstart.itemsSection.scrollTo({
-      left: "".concat(262 * (number - 1)),
+      left: "".concat(260 * (number - 1)),
       behavior: 'smooth'
     });
   } else {
     _onstart.itemsSection.scrollTo({
-      left: "".concat(524 * (number - 1)),
+      left: "".concat(520 * (number - 1)),
       behavior: 'smooth'
     });
   }
