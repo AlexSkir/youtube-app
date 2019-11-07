@@ -7,7 +7,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
 import { createButton } from './nodesManager';
-import { domBuilder, viewersCounter } from './domBuilder';
+import { searchItemWrapper, viewersCounter } from './searchItemWrapper';
 import { size } from './onstart';
 
 export default class InfoLoader {
@@ -77,9 +77,9 @@ export default class InfoLoader {
       const item = data.items[i];
       const videoId = item.id.videoId;
       if (document.getElementById('itemsSection').childNodes.length >= 15) {
-        domBuilder(item, `${data.items.indexOf(item) + this.clips.length - 15}`);
+        searchItemWrapper(item, `${data.items.indexOf(item) + this.clips.length - 15}`);
       } else {
-        domBuilder(item, data.items.indexOf(item));
+        searchItemWrapper(item, data.items.indexOf(item));
       }
       videos.push(videoId);
     }

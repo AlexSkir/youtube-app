@@ -4,7 +4,7 @@
 import { pageLoad, searchButton, inputArea, searchSection } from './onstart';
 import InfoLoader from './search';
 import { deleteButtons, deleteItemsPages } from './nodesManager';
-import { nothingFound } from './domBuilder';
+import { nothingFound } from './searchItemWrapper';
 import './resize';
 
 const current = {
@@ -24,8 +24,10 @@ inputArea.addEventListener('keydown', e => {
 //* initialization of search request and DOM creating on search button click
 searchButton.addEventListener('click', () => {
   if (inputArea.value !== '') {
-    if (document.querySelector('.slider')) {
-      document.querySelector('.slider').style.display = 'none';
+    if (document.querySelector('.about-block')) {
+      document.querySelector('.about-block').classList.add('hidden');
+      document.querySelector('.itemsSection').classList.remove('hidden');
+      document.querySelector('.buttonSection').classList.remove('hidden');
     }
     //* delete old button for next requests
     if (document.getElementById('next')) {

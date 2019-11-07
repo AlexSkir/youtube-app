@@ -7,7 +7,7 @@ exports.default = void 0;
 
 var _nodesManager = require("./nodesManager");
 
-var _domBuilder = require("./domBuilder");
+var _searchItemWrapper = require("./searchItemWrapper");
 
 var _onstart = require("./onstart");
 
@@ -95,9 +95,9 @@ class InfoLoader {
       const videoId = item.id.videoId;
 
       if (document.getElementById('itemsSection').childNodes.length >= 15) {
-        (0, _domBuilder.domBuilder)(item, "".concat(data.items.indexOf(item) + this.clips.length - 15));
+        (0, _searchItemWrapper.searchItemWrapper)(item, "".concat(data.items.indexOf(item) + this.clips.length - 15));
       } else {
-        (0, _domBuilder.domBuilder)(item, data.items.indexOf(item));
+        (0, _searchItemWrapper.searchItemWrapper)(item, data.items.indexOf(item));
       }
 
       videos.push(videoId);
@@ -109,9 +109,9 @@ class InfoLoader {
     this.getRespCount(videos, viewCount => {
       for (let j = 0; j < viewCount.items.length; j++) {
         if (document.getElementById('itemsSection').childNodes.length > 15) {
-          (0, _domBuilder.viewersCounter)(viewCount.items[j].statistics.viewCount, "".concat(j + this.clips.length - 15));
+          (0, _searchItemWrapper.viewersCounter)(viewCount.items[j].statistics.viewCount, "".concat(j + this.clips.length - 15));
         } else {
-          (0, _domBuilder.viewersCounter)(viewCount.items[j].statistics.viewCount, j);
+          (0, _searchItemWrapper.viewersCounter)(viewCount.items[j].statistics.viewCount, j);
         }
       }
     });

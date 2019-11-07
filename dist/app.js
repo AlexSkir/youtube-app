@@ -11,7 +11,7 @@ var _search = _interopRequireDefault(require("./search"));
 
 var _nodesManager = require("./nodesManager");
 
-var _domBuilder = require("./domBuilder");
+var _searchItemWrapper = require("./searchItemWrapper");
 
 require("./resize");
 
@@ -39,8 +39,10 @@ _onstart.inputArea.addEventListener('keydown', e => {
 
 _onstart.searchButton.addEventListener('click', () => {
   if (_onstart.inputArea.value !== '') {
-    if (document.querySelector('.slider')) {
-      document.querySelector('.slider').style.display = 'none';
+    if (document.querySelector('.about-block')) {
+      document.querySelector('.about-block').classList.add('hidden');
+      document.querySelector('.itemsSection').classList.remove('hidden');
+      document.querySelector('.buttonSection').classList.remove('hidden');
     } //* delete old button for next requests
 
 
@@ -70,7 +72,7 @@ _onstart.searchButton.addEventListener('click', () => {
       }, 200);
       setTimeout(() => {
         if (current.obj.len === 0) {
-          (0, _domBuilder.nothingFound)(current.searchTags); //* if no data found load page with searching advice
+          (0, _searchItemWrapper.nothingFound)(current.searchTags); //* if no data found load page with searching advice
         }
       }, 800);
       _onstart.inputArea.value = '';
