@@ -11,6 +11,12 @@ var _onstart = require("./onstart");
 
 /* eslint-disable no-undef */
 function onClickHandler(e, iconInfo) {
+  if (e.currentTarget.classList.contains('active-icon-button')) {
+    e.currentTarget.classList.remove('active-icon-button');
+  } else {
+    e.currentTarget.classList.add('active-icon-button');
+  }
+
   const parent = e.currentTarget.parentNode.parentNode.parentNode;
   const bg = parent.querySelector('.info-block');
 
@@ -34,6 +40,7 @@ function onClickHandler(e, iconInfo) {
 }
 
 function onMouseEnterHandler(e, iconInfo) {
+  e.currentTarget.classList.add('active-icon-button');
   const parent = e.currentTarget.parentNode.parentNode.parentNode;
   const bg = parent.querySelector('.info-block');
 
@@ -49,6 +56,7 @@ function onMouseEnterHandler(e, iconInfo) {
 }
 
 function onMouseLeaveHandler(e, iconInfo) {
+  e.currentTarget.classList.remove('active-icon-button');
   const parent = e.currentTarget.parentNode.parentNode.parentNode;
   const bg = parent.querySelector('.info-block');
 

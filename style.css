@@ -262,11 +262,9 @@ body * {
 	width: 55%;
 	color: #9a9a9a;
 }
-.seacrh-item .icon-panel i:hover,
-.seacrh-item .icon-panel i:active {
+.active-icon-button {
 	color: red;
 	transform: scale(1.5);
-	transition: scale 1s;
 }
 .seacrh-item .button-like-link {
 	display: flex;
