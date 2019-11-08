@@ -34,6 +34,9 @@ body * {
 }
 .container {
 	position: relative;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -44,7 +47,10 @@ body * {
 .header {
 	position: relative;
   top: 0;
-  display: flex;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
@@ -52,7 +58,10 @@ body * {
 }
 .banner {
 	position: relative;
-  display: flex;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
   flex-direction: column-reverse;
   width: 100%;
   height: 350px;
@@ -74,6 +83,9 @@ body * {
 	z-index: 1;
 }
 .logo-block {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
   height: 50px;
   align-items: center;
@@ -92,6 +104,9 @@ body * {
   font-size: 24px;
 }
 .header-title {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	margin-bottom: 50px;
 	font-family: sans-serif;
@@ -101,6 +116,9 @@ body * {
 	z-index: 10;
 }
 .search {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
@@ -147,6 +165,9 @@ body * {
 }
 
 .about-block {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -154,6 +175,9 @@ body * {
 	height: 500px;
 }
 .about-description {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -185,6 +209,9 @@ body * {
 }
 
 .itemsSection {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	align-items: center;
 	width: 1040px;
@@ -198,6 +225,9 @@ body * {
 	height: 0;
 }
 .itemsSection .seacrh-item {	
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	width: 220px;
@@ -219,6 +249,9 @@ body * {
 .top-part .info-block {
 	position: absolute;
 	bottom: -50px;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
   align-items: center;
   width: 100%;
@@ -232,6 +265,9 @@ body * {
 	bottom: 0!important;
 }
 .seacrh-item .bottom-part {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -240,6 +276,9 @@ body * {
 	height: 180px;
 }
 .seacrh-item .title {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -257,6 +296,9 @@ body * {
 	overflow: hidden;
 }
 .seacrh-item .icon-panel {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	justify-content: space-between;
 	width: 55%;
@@ -267,6 +309,9 @@ body * {
 	transform: scale(1.5);
 }
 .seacrh-item .button-like-link {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -305,6 +350,9 @@ body * {
 }
 
 .buttonSection {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	width: 100%;
 	height: 50px;
@@ -339,6 +387,9 @@ body * {
 .nothingFound {
 	width: 100%;
 	height: 70%;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -366,6 +417,9 @@ body * {
 	transform: scale(5);
 }
 .footer {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -375,6 +429,9 @@ body * {
 	background: rgba(0, 0, 0, 0.8);
 }
 .footer .footer-title {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -384,9 +441,15 @@ body * {
 	letter-spacing: 4px;
 }
 .footer-icons-block {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 }
 .footer-icon {
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
 	display: flex;
 	justify-content: center;
 	align-items: center;
