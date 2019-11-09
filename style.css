@@ -14,13 +14,10 @@
   src: local('Great Vibes'), local('GreatVibes-Regular'), url(https://fonts.gstatic.com/s/greatvibes/v7/RWmMoKWR9v4ksMfaWd_JN9XFiaQ.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-html {
-	width: 100%;
-  height: 100%;
-}
 body {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	min-height: 100vh;
 	background: linear-gradient(to right, #4d4d4d, #ffffff);
 	background-repeat-x: no-repeat;
   background-size: cover;
@@ -40,7 +37,8 @@ body * {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100%;
+	height: auto;
+  min-height: 100vh;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -235,6 +233,7 @@ body * {
 	margin: 20px;
 	background: white;
 	-webkit-appearance: push-button;
+	-moz-appearance: push-button;
 	box-shadow: 2px 2px 9px 1px black;
 }
 .seacrh-item .top-part {
@@ -294,6 +293,7 @@ body * {
 	box-sizing: border-box;
 	word-break: break-word;
 	overflow: hidden;
+	line-height: 1.1;
 }
 .seacrh-item .icon-panel {
 	display: -ms-flexbox;
@@ -322,6 +322,7 @@ body * {
 	text-transform: uppercase;
 	background: black;
 	-webkit-appearance: push-button;
+	-moz-appearance: push-button;
 }
 .seacrh-item .button-like-link:active {
 	background: #ca0a0a;
@@ -370,6 +371,7 @@ body * {
 	border-color: red;
 	border-radius: 35px;
 	-webkit-appearance: push-button;
+	-moz-appearance: push-button;
 }
 .pageButton:hover {
 	cursor: pointer;
@@ -473,6 +475,7 @@ body * {
 	.about-block {
 		flex-direction: column;
 		height: auto;
+		min-height: 850px;
 	}
 	.about-description {
 		width: 100%;
@@ -492,6 +495,9 @@ body * {
 	}
 	.header {
 		height: 300px;
+	}
+	.banner {
+		height: 250px;
 	}
 	.header-title {
 		margin-bottom: 20px;
@@ -516,7 +522,6 @@ body * {
 		background: linear-gradient(to right, #4d4d4d, #e2e0e0);
 	}
 	.container {
-    padding: 20px 0;
     box-sizing: border-box;
 	}
 	.header {
