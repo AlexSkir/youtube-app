@@ -13,9 +13,7 @@ import { size } from './onstart';
 export default class InfoLoader {
   constructor() {
     this.baselink = 'https://www.googleapis.com/youtube/v3/';
-    this.settings = 'AIzaSyBr0QSoZYnVsiScWxGe92vJAaA-B-YnSD4';
-    // this.settings = 'AIzaSyAc3ZRCWgyToch5GHOpeJCKCPeDE-LY-z0'; extra-key 2
-    // this.settings = 'AIzaSyBhgMW0S1a7AdMt0Vq2BUjzSiJR0uZn7cA'; extra-key 3
+    this.settings = 'AIzaSyC7FRrYzP8kouPJ8q4nxK3w6rQaHZP86Xk';
     this.maxRezult = 15;
     this.count = '';
     this.clips = [];
