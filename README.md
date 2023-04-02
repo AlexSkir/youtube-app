@@ -1,5 +1,5 @@
 ## gh-pages: 
-[https://alexskir.github.io/shitapp/](https://alexskir.github.io/shitapp/)
+[https://alexskir.github.io/youtube-app/](https://alexskir.github.io/youtube-app/)
 
 
 ## Task:
@@ -7,7 +7,7 @@
 
 
 ## To edit app locally:
-* git clone git@github.com:AlexSkir/shitapp.git
+* git clone git@github.com:AlexSkir/youtube-app.git
 * npm i
 * make your changes
 * npm run babel
